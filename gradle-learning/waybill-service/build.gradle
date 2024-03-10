@@ -1,0 +1,13 @@
+dependencies {
+    implementation project(":waybill-api")
+}
+
+task copyLib(type: Copy) {
+    group("guorong")
+    from(configurations.runtimeClasspath, {
+        eachFile {item ->
+            println("${item.name}")
+        }
+    })
+    into("${buildDir}/dist/lib")
+}

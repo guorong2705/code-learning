@@ -1,0 +1,44 @@
+server:
+  port: 9011
+spring:
+  config:
+    import: classpath:bootstrap.yaml
+  application:
+    name: provider-service
+  cloud:
+    sentinel:
+      transport:
+        # 本地和仪表盘进行交互的端口
+        port: 8719
+        # sentinel仪表盘地址
+        dashboard: 192.168.56.104:9086
+      datasource:
+        # 流控规则
+        ds-flow-rule:
+          file:
+            file: classpath:sentinel-rule/FlowRule.json
+            data-type: json
+            rule-type: flow
+        ds-degrade-rule:
+          file:
+            file: classpath:sentinel-rule/DegradeRule.json
+            rule-type: degrade
+            data-type: json
+
+### dubbo 配置
+dubbo:
+  scan:
+    base-packages: com.guorong.provider
+  registry:
+    address: nacos://${nacos.server-address}:${nacos.port}/?username=${nacos.username}&password=${nacos.password}
+    group: dubbo-service
+  protocol:
+    name: dubbo
+    port: -1
+
+### 自定义 nacos 变量
+nacos:
+  server-address: 192.168.56.104
+  port: 8848
+  username: nacos
+  password: nacos

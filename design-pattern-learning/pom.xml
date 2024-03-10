@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.guorong</groupId>
+    <artifactId>design-pattern-learning</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <!--创建型模式-->
+        <module>creational-singleton</module>
+        <module>creational-factory</module>
+        <module>creational-factory-method</module>
+        <module>creational-abstract-factory</module>
+        <module>creational-builder</module>
+        <module>creational-prototype</module>
+        <!--结构型模式-->
+        <module>structural-adapter</module>
+        <module>structural-bridge</module>
+        <module>structural-decorator</module>
+        <module>structural-facade</module>
+        <module>structural-proxy</module>
+        <module>structural-composite</module>
+        <module>structural-flyweight</module>
+        <!--行为型模式-->
+        <module>behavioral-observer</module>
+        <module>behavioral-command</module>
+        <module>behavioral-state</module>
+        <module>behavioral-template-method</module>
+        <module>behavioral-strategy</module>
+        <module>behavioral-iterator</module>
+        <module>behavioral-chain-of-responsibility</module>
+        <module>behavioral-interpreter</module>
+        <module>behavioral-mediator</module>
+        <module>behavioral-memento</module>
+        <module>behavioral-visitor</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.26</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--cglib动态代理依赖-->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

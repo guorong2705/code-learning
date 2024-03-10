@@ -1,0 +1,46 @@
+package com.guorong.validation.controller;
+
+import com.guorong.common.ApiResult;
+import com.guorong.validation.dto.UserDto;
+import lombok.RequiredArgsConstructor;
+import org.hibernate.validator.internal.engine.path.PathImpl;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * 编程校验
+ */
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/program/validate/")
+public class ProgramValidateController {
+
+    private final Validator validator;
+
+    @PostMapping("getUser")
+    public ApiResult getUser(@RequestBody UserDto userDto) {
+        Set<ConstraintViolation<UserDto>> constraintViolationSet = validator.validate(userDto);
+        if (constraintViolationSet.isEmpty()) {
+            // 校验通过，不存在错误
+            return ApiResult.success();
+        }
+        // 校验不通过
+        Map<String,String> dataMap = new HashMap<>();
+        for (ConstraintViolation<?> constraintViolation : constraintViolationSet) {
+            String fieldName = ((PathImpl) constraintViolation.getPropertyPath()).getLeafNode().getName();
+            String message = constraintViolation.getMessage();
+            dataMap.put(fieldName, message);
+        }
+        return ApiResult.fail(dataMap);
+    }
+
+
+}

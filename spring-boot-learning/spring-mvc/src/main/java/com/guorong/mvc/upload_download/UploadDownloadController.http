@@ -1,0 +1,16 @@
+### 上传文件
+POST http://localhost:8089/uploadDownload/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="aa.txt"
+Content-Type: application/json
+Content-Encoding: UTF-8
+
+< D:/a.xls
+--WebAppBoundary--
+
+
+
+### 下载文件
+GET http://localhost:8089/uploadDownload/download/aa.txt

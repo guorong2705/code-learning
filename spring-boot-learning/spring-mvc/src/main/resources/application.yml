@@ -1,0 +1,23 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: spring-mvc
+  servlet:
+    multipart:
+      # 单个文件的最大值
+      max-file-size: 2MB
+      # 上传文件总共最大值
+      max-request-size: 10MB
+# 自定义属性
+custom:
+  user:
+    name: 张三
+    age: 27
+# 加密配置
+jasypt:
+  encryptor:
+    # 加密使用的盐
+    password: sw8$tr
+    # 加密算法
+    algorithm: PBEWITHHMACSHA512ANDAES_256

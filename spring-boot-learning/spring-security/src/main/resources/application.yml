@@ -1,0 +1,6 @@
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    # 关闭Thymeleaf模板引擎缓存
+    cache: false

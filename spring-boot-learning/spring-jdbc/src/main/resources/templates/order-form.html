@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<h1>Order Your Taco</h1>
+
+<img th:src="@{/images/TacoCloud.png}"/><br/>
+
+<a th:href="@{/taco/showTacoForm}" id="another">设计另一个玉米饼</a><br/>
+
+<form method="post" th:action="@{/order/save}" th:object="${order}">
+
+    <h3>下订单....</h3>
+
+    <div th:if="${#fields.hasErrors()}">
+        <!--字段检验存在错误显示该信息-->
+        <span class="validationError">请更正以下问题，然后重新提交</span>
+    </div>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}"/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validationError"></span>
+    <br/>
+
+    <label for="street">Street address: </label>
+    <input type="text" id="street" name="street" th:field="*{street}"/>
+    <span th:if="${#fields.hasErrors('street')}" th:errors="*{street}" class="validationError"></span>
+    <br/>
+
+    <label for="city">City: </label>
+    <input type="text" id="city" name="city" th:field="*{city}"/>
+    <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="validationError"></span>
+    <br/>
+
+    <label for="state">State: </label>
+    <input type="text" id="state" name="state" th:field="*{state}"/>
+    <span th:if="${#fields.hasErrors('state')}" th:errors="*{state}" class="validationError"></span>
+    <br/>
+
+    <label for="zip">Zip code: </label>
+    <input type="text" id="zip" name="zip" th:field="*{zip}"/>
+    <span th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}" class="validationError"></span>
+    <br/>
+
+
+    <h3>Here's how I'll pay...</h3>
+
+    <label for="ccNumber">Credit Card #: </label>
+    <input type="text" id="ccNumber" name="ccNumber" th:fied="*{ccNumber}"/>
+    <span th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}" class="validationError"></span>
+    <br/>
+
+    <label for="ccExpiration">Expiration: </label>
+    <input type="text" id="ccExpiration" name="ccExpiration" th:field="*{ccExpiration}"/>
+    <span th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccExpiration}" class="validationError"></span>
+    <br/>
+
+    <label for="ccCVV">CVV: </label>
+    <input type="text" id="ccCVV" name="ccCVV" th:field="*{ccCVV}"/>
+    <span th:if="${#fields.hasErrors('ccCVV')}" th:errors="*{ccCVV}" class="validationError"></span>
+    <br/>
+
+    <button type="submit"> 提交订单</button>
+
+</form>
+
+</body>
+</html>

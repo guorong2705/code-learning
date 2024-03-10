@@ -1,0 +1,7 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /swagger
+spring:
+  application:
+    name: springboot-swagger

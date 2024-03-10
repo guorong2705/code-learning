@@ -1,0 +1,11 @@
+###
+GET 127.0.0.1:8089/servlet/getUser
+
+###
+POST 127.0.0.1:8089/servlet/addUser
+Content-Type: application/json
+
+{
+  "name": "张三",
+  "age": 28
+}

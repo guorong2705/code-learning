@@ -1,0 +1,15 @@
+server:
+  port: 8080 # 配置端口
+spring:
+  application:
+    name: springboot-jdbc # 程序名称
+  datasource: # 配置数据库连接池
+    url: jdbc:mysql://localhost:3306/springboot_learning?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: springboot_learning
+    password: springboot_learning
+logging:
+  level:
+    root: info # 设置全局日志级别
+    com.guorong.springboot.jdbc.dao: debug # 指定局部日志级别
+    org.springframework.jdbc.core.JdbcTemplate: debug # 配置这个才会打印 SQL

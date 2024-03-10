@@ -1,0 +1,34 @@
+### 解题思路
+
+1、先不要着急写代码，先去好好想想。
+2、把判断条件想到（想不到的话多尝试几次）。
+3、要尽量用省性能的方法。
+4、一定要多思考！
+
+### 代码
+
+* java
+
+```java
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+       //创建一个List集合用来存储要输出的元素的下标
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                //1.判断相加是否等于target
+                //2.判断i和j的下标不能相等，因为这样会出错，和题意不符
+                if (nums[i] + nums[j] == target && i != j) {
+                    list.add(i);
+                    list.add(j);
+                    //利用Java8新特性来将泛型为Integer类型的list集合转为int数组
+                    int[] arr = list.stream().mapToInt(Integer::valueOf).toArray();
+                    return arr;
+                }
+            }
+        }
+        return null;
+    }
+}
+```
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guorong.mybatis.mapper.master.UserMapper">
+    <resultMap id="BaseResultMap" type="com.guorong.mybatis.entity.User">
+        <id property="userId" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="nickname" column="nickname"/>
+        <result property="password" column="password"/>
+        <result property="age" column="age"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="AllColumnSql">
+        user_id,username,password,nickname,age,create_time,update_time
+    </sql>
+
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId">
+        insert into t_user(username, nickname, password, age,create_time,update_time)
+        values(#{username}, #{nickname}, #{password}, #{age}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertBatch" useGeneratedKeys="true" keyProperty="userId">
+        insert into t_user(username, nickname, password, age,create_time,update_time)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.username},#{item.nickname},#{item.password},#{item.age},#{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select <include refid="AllColumnSql"/>
+        from t_user
+    </select>
+
+
+    <select id="selectById" resultMap="BaseResultMap">
+        select <include refid="AllColumnSql"/>
+        from t_user
+        where user_id = #{id,jdbcType=BIGINT}
+    </select>
+
+
+</mapper>

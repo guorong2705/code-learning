@@ -1,0 +1,6 @@
+rootProject.name = 'gradle-learning'
+include 'waybill-api'
+include 'waybill-service'
+include 'graph-api'
+include 'graph-service'
+

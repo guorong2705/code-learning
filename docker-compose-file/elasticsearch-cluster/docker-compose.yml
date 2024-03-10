@@ -1,0 +1,63 @@
+version: '2.2'
+services:
+  es-master:
+    image: elasticsearch:6.7.1
+    container_name: es-master
+    environment:
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_master_data:/usr/share/elasticsearch/data
+    ports:
+      - 9201:9200
+      - 9301:9300
+    networks:
+      - esnet
+  es-node1:
+    image: elasticsearch:6.7.1
+    container_name: es-node1
+    environment:
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+      - "discovery.zen.ping.unicast.hosts=es-master"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_node1_data:/usr/share/elasticsearch/data
+    ports:
+      - 9202:9200
+      - 9302:9300
+    networks:
+      - esnet
+  kibana:
+    image: kibana:6.7.1
+    container_name: kibana
+    environment:
+      SERVER_NAME: kibana
+      ELASTICSEARCH_HOSTS: '["http://es-master:9200","http://es-node1:9200"]'
+    volumes:
+      - kibana_config:/usr/share/kibana/config
+    ports:
+      - 5601:5601
+    networks:
+      - esnet
+    depends_on:
+      - es-master
+      - es-node1
+volumes:
+  es_master_data:
+    driver: local
+  es_node1_data:
+    driver: local
+  kibana_config:
+    driver: local
+networks:
+  esnet:

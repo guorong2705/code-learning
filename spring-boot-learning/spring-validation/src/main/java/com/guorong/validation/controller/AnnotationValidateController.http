@@ -1,0 +1,20 @@
+### 校验枚举参数
+POST http://localhost:8080/annotation/validate/validateEnum
+Content-Type: application/json
+
+{
+  "productList": [
+    "11",
+    "22"
+  ],
+  "clothSize": "MIDDLE01",
+  "number": 2,
+  "user": {
+    "userName": null,
+    "age": 10
+  }
+}
+
+
+
+

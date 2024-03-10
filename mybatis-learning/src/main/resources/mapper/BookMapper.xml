@@ -1,0 +1,10 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guorong.mapper.BookMapper">
+
+    <select id="selectList" resultType="com.guorong.entity.Book">
+        select id,book_name,price from t_book
+    </select>
+
+</mapper>

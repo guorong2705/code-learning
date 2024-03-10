@@ -1,0 +1,12 @@
+# nacos注册和配置
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.server-address}:${nacos.port}
+        group: nacos-service
+      config:
+        server-addr: ${nacos.server-address}:${nacos.port}
+        group: nacos-config
+        prefix: application-dev
+        file-extension: yaml

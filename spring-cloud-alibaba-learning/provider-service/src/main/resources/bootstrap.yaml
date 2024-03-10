@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        enabled: false
+        server-addr: ${nacos.server-address}:${nacos.port}
+        group: nacos-service
+      config:
+        server-addr: ${nacos.server-address}:${nacos.port}
+        group: nacos-config
+        prefix: application-dev
+        file-extension: yaml
+

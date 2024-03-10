@@ -1,0 +1,8 @@
+### 编程校验
+POST http://localhost:8080/program/validate/getUser
+Content-Type: application/json
+
+{
+  "userName": null,
+  "age": 100
+}

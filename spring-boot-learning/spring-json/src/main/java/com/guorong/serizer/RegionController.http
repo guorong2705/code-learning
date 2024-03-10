@@ -1,0 +1,56 @@
+### 测试自定义反序列化器(数组)
+POST http://localhost:8080/region/addWaybill
+Content-Type: application/json
+
+{
+  "regionDto": [
+    "001",
+    "002",
+    "003"
+  ],
+  "regionDtoList": [
+    [
+      "101",
+      "102"
+    ],
+    [
+      "201",
+      "202"
+    ]
+  ],
+  "name": "竟然",
+  "areaDto": {
+    "regionDtoList": [
+      [
+        "7101",
+        "7102"
+      ],
+      [
+        "7201",
+        "7202"
+      ]
+    ]
+  }
+}
+
+### 测试自定义反序列化器(对象)
+POST http://localhost:8080/region/addWaybill
+Content-Type: application/json
+
+{
+  "regionDto": {
+    "provinceCode": "2001",
+    "cityCode": "2002",
+    "countyCode": "2003",
+    "codeList": ["5001","5002", "503"]
+  }
+}
+
+
+
+### 测试自定义序列化器
+GET http://localhost:8080/region/getWaybill
+Content-Type: application/json
+
+
+

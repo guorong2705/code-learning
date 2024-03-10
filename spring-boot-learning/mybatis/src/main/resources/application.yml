@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    master: # 主数据库配置
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:h2
+      username: root
+      password: 123456
+    slave: # 从数据库配置
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:h2
+      username: root
+      password: 123456
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    com.guorong.mybatis.mapper: debug

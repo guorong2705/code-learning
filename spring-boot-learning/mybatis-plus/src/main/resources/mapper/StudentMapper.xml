@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guorong.mp.mapper.StudentMapper">
+
+
+    <select id="findLikePageVo" resultType="com.guorong.mp.entity.Student">
+        select * from t_student
+        <where>
+            <if test="student.id != null">
+                and id = #{student.id,jdbcType=BIGINT}
+            </if>
+            <if test="student.name!=null and student.name!=''">
+                <bind name="nameLike" value="'%' + student.name + '%'"/>
+                and name like #{nameLike,jdbcType=VARCHAR}
+            </if>
+            <if test="student.age!=null">
+                and age = #{student.age,jdbcType=INTEGER}
+            </if>
+            <if test="student.email!=null and student.email!=''">
+                <bind name="emailLike" value="'%' + student.email + '%'"/>
+                and email Like #{emailLike,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>
