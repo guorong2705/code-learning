@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: cloud-pay
+server:
+  port: 9011
