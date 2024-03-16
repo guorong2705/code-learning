@@ -1,12 +1,14 @@
-server:
-  port: 9011
 spring:
   application:
-    name: cloud-pay
+    name: cloud-order-service
   cloud:
     consul:
       host: 127.0.0.1
       port: 8500
+      config:
+        enabled: true
+        profileSeparator: '-'
       discovery:
+        enabled: true
         heartbeat:
           enabled: true

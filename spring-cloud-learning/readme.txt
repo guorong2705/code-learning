@@ -1,5 +1,6 @@
 ### 版本要求
-- Java17+
-- cloud2023.0.0
-- boot3.2.0
-- maven3.9+
+- Java 17+
+- cloud 2023.0.0
+- boot 3.2.0
+- maven 3.9+
+- consul 1.17.0

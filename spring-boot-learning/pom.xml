@@ -5,14 +5,14 @@
 
     <groupId>com.guorong</groupId>
     <artifactId>spring-boot-learning</artifactId>
-    <version>${reversion}</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <java.version>1.8</java.version>
-        <reversion>1.0.0</reversion>
+        <lombok.version>1.18.28</lombok.version>
+        <hutool.version>5.8.23</hutool.version>
     </properties>
 
     <modules>
@@ -35,14 +35,19 @@
         <module>rocketmq</module>
     </modules>
 
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <dependencies>
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!-- hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

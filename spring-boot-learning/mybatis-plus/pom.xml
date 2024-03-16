@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.guorong</groupId>
         <artifactId>spring-boot-learning</artifactId>
-        <version>${reversion}</version>
+        <version>1.0.0</version>
     </parent>
 
     <properties>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.guorong</groupId>
             <artifactId>common</artifactId>
-            <version>${reversion}</version>
+            <version>${project.version}</version>
         </dependency>
         <!--spring-boot-->
         <dependency>
@@ -70,12 +70,6 @@
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.4.3</version>
-        </dependency>
-        <!--lombok-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
