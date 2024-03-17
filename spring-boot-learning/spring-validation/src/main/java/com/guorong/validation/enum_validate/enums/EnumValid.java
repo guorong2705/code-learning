@@ -1,4 +1,4 @@
-package com.guorong.validation.annotation;
+package com.guorong.validation.enum_validate.enums;
 
 import lombok.SneakyThrows;
 
@@ -16,9 +16,9 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- *  校验枚举需要实现 EnumValidInterface 接口<br/>
- * 校验枚举值使用方法：<br/>
- * - @EnumValue(enumClass = SizeEnum.class) <br/>
+ * 校验枚举需要实现 EnumValidInterface 接口
+ * 校验枚举值使用方法
+ * - @EnumValue(enumClass = SizeEnum.class)
  * - private String size;
  */
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
@@ -42,8 +42,7 @@ public @interface EnumValid {
 
         private Map<String, String> codeDescMap;
 
-        // 注解 @EnumValid 在多少个地方使用，就会调用这个初始化方法多少次。
-        // 说明：即同一个对象同一个字段，多次请求校验，只会在一次校验的时候调用
+        // 注解 @EnumValid 在多少个地方使用，就会调用这个初始化方法多少次。说明：即同一个对象同一个字段，多次请求校验，只会在一次校验的时候调用
         @SneakyThrows
         @Override
         public void initialize(EnumValid annotation) {
@@ -53,7 +52,7 @@ public @interface EnumValid {
             }
             // 初始化编码和描数
             codeDescMap = Arrays.stream(enumConstants)
-                    .collect(Collectors.toMap(EnumValidInterface::getCode, EnumValidInterface::getDesc));
+                    .collect(Collectors.toMap(EnumValidInterface::getCode, EnumValidInterface::getName));
         }
 
         // 这个校验方法，每次校验都会调用
@@ -64,11 +63,11 @@ public @interface EnumValid {
             }
             // 创建创建消息模板
             String defaultTemplate = context.getDefaultConstraintMessageTemplate();
-            defaultTemplate.replaceAll("\\{messageVariable}", codeDescMap.toString());
+            String replaceTemplate = defaultTemplate.replaceAll("\\{messageVariable}", codeDescMap.toString());
             // 禁用默认的 message 的值
             context.disableDefaultConstraintViolation();
             // 重新添加错误提示语句
-            context.buildConstraintViolationWithTemplate(defaultTemplate).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate(replaceTemplate).addConstraintViolation();
             return false;
         }
     }

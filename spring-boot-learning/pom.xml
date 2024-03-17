@@ -33,6 +33,7 @@
         <module>knife4j</module>
         <module>spring-mock</module>
         <module>rocketmq</module>
+        <module>spring-aop</module>
     </modules>
 
     <dependencies>

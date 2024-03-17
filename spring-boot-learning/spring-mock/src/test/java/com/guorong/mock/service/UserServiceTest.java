@@ -15,13 +15,10 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    @MockBean
-    private UserDao userDao;
-
     @Test
     public void test01() {
         User mockUser = User.builder().id(10).name("张三").age(36).build();
-        Mockito.when(userDao.getUser()).thenReturn(mockUser);
+        Mockito.when(userService.getUser()).thenReturn(mockUser);
 
         User user = userService.getUser();
         Assertions.assertNotNull(user);
@@ -30,7 +27,7 @@ public class UserServiceTest {
     @Test
     public void test02() {
         User mockUser = User.builder().id(15).name("李四").age(31).build();
-        Mockito.when(userDao.getById(15)).thenReturn(mockUser);
+        Mockito.when(userService.getById(15)).thenReturn(mockUser);
 
         User user = userService.getById(20);
         Assertions.assertNull(user);
@@ -42,7 +39,7 @@ public class UserServiceTest {
 
     @Test
     public void test03() {
-        Mockito.when(userDao.insertUser(Mockito.any(User.class))).thenReturn(100);
+        Mockito.when(userService.insertUser(Mockito.any(User.class))).thenReturn(100);
 
         int result = userService.insertUser(new User());
         Assertions.assertEquals(100, result);
@@ -50,7 +47,7 @@ public class UserServiceTest {
 
     @Test
     public void testThenThrow() {
-        Mockito.when(userDao.getUser()).thenThrow(new RuntimeException("爆出异常"));
+        Mockito.when(userService.getUser()).thenThrow(new RuntimeException("爆出异常"));
         userService.getUser();
     }
 

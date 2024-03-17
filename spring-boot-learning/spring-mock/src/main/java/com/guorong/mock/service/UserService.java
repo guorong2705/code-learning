@@ -1,29 +1,11 @@
 package com.guorong.mock.service;
 
-import com.guorong.mock.dao.UserDao;
 import com.guorong.mock.model.User;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
-public class UserService {
+public interface UserService {
+    User getUser();
 
-    private final UserDao userDao;
+    User getById(Integer id);
 
-
-    public User getUser() {
-        return userDao.getUser();
-    }
-
-
-    public User getById(Integer id) {
-        return userDao.getById(id);
-    }
-
-    public int insertUser(User user) {
-        return userDao.insertUser(user);
-    }
-
+    int insertUser(User user);
 }
-
