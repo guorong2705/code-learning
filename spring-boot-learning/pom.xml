@@ -34,6 +34,7 @@
         <module>spring-mock</module>
         <module>rocketmq</module>
         <module>spring-aop</module>
+        <module>spring-demo</module>
     </modules>
 
     <dependencies>
