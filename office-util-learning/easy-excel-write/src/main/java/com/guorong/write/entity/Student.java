@@ -4,6 +4,9 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import com.alibaba.excel.annotation.write.style.ContentRowHeight;
 import com.alibaba.excel.annotation.write.style.HeadRowHeight;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * - @ColumnWidth(10) // 单元格宽度
@@ -12,6 +15,9 @@ import com.alibaba.excel.annotation.write.style.HeadRowHeight;
  * @author guorong
  * @date 2021-05-15
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @HeadRowHeight(30)
 @ContentRowHeight(15)
 public class Student {
@@ -28,35 +34,4 @@ public class Student {
     @ExcelProperty(value = "学生年龄")
     private Integer age;
 
-    public Student() {}
-
-    public Student(String id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 }

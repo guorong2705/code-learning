@@ -4,6 +4,9 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import com.alibaba.excel.annotation.write.style.ContentRowHeight;
 import com.alibaba.excel.annotation.write.style.HeadRowHeight;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * - @ColumnWidth(15) // 设置单元格宽度
@@ -12,6 +15,9 @@ import com.alibaba.excel.annotation.write.style.HeadRowHeight;
  * @author guorong
  * @date 2021-05-15
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @HeadRowHeight(20)
 @ContentRowHeight(12)
 public class Car {
@@ -24,26 +30,4 @@ public class Car {
     @ExcelProperty(value = "价格")
     private Double price;
 
-    public Car() {}
-
-    public Car(String brand, Double price) {
-        this.brand = brand;
-        this.price = price;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 }
