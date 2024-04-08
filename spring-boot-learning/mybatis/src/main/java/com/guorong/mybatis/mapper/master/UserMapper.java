@@ -1,16 +1,12 @@
 package com.guorong.mybatis.mapper.master;
 
 
-import com.guorong.mybatis.entity.User;
+import com.guorong.mybatis.entity.master.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * @author guorong
- * @date 2020-05-13
- */
 @Repository
 public interface UserMapper {
 

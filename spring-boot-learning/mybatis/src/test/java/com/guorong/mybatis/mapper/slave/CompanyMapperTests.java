@@ -1,23 +1,28 @@
-package com.guorong.mybatis.mapper;
+package com.guorong.mybatis.mapper.slave;
 
-import com.guorong.mybatis.entity.Company;
-import com.guorong.mybatis.mapper.slave.CompanyMapper;
+import com.guorong.mybatis.entity.slave.Company;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 @Slf4j
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyMapperTests {
 
     @Autowired
     private CompanyMapper companyMapper;
+
+    @BeforeEach
+    public void init() {
+        Company company1 = new Company(101, "腾讯", "深圳");
+        Company company2 = new Company(102, "百度", "深圳");
+        companyMapper.insert(company1);
+        companyMapper.insert(company2);
+    }
 
 
     @Test

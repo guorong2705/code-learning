@@ -2,22 +2,23 @@ server:
   port: 8080
 spring:
   datasource:
-    master: # 主数据库配置
-      driver-class-name: org.h2.Driver
-      url: jdbc:h2:mem:h2
+    # 主数据库
+    master:
+      name: master
+      url: jdbc:h2:mem:${spring.datasource.master.name}
       username: root
       password: 123456
-    slave: # 从数据库配置
       driver-class-name: org.h2.Driver
-      url: jdbc:h2:mem:h2
+      type: com.zaxxer.hikari.HikariDataSource
+    # 从数据库
+    slave:
+      name: slave
+      url: jdbc:h2:mem:${spring.datasource.slave.name}
       username: root
       password: 123456
-    schema: classpath:db/schema.sql
-    data: classpath:db/data.sql
-    initialization-mode: always
+      driver-class-name: org.h2.Driver
+      type: com.zaxxer.hikari.HikariDataSource
   h2:
     console:
       enabled: true
-logging:
-  level:
-    com.guorong.mybatis.mapper: debug
+      path: /h2-console

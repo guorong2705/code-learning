@@ -11,9 +11,13 @@ import java.io.Serializable;
  */
 @Getter
 public class CommonResult<T> implements Serializable {
+
     private Integer code;
+
     private Boolean success;
+
     private String message;
+
     private T data;
 
     private CommonResult(Integer code, Boolean success, String message, T data) {

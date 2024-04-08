@@ -7,25 +7,20 @@
         <id property="id" column="id"/>
         <result property="orderNo" column="order_no"/>
         <collection property="orderItemList"
-                    ofType="com.guorong.mybatis.entity.OrderItem"
+                    ofType="com.guorong.mybatis.entity.master.OrderItem"
                     select="selectOrderItemByOrderNo"
                     column="orderNo=order_no"/>
     </resultMap>
 
-    <resultMap id="orderItemResultMap" type="com.guorong.mybatis.entity.OrderItem">
+    <resultMap id="orderItemResultMap" type="com.guorong.mybatis.entity.master.OrderItem">
         <id property="id" column="id"/>
         <result property="orderNo" column="order_no"/>
         <result property="skuCode" column="sku_code"/>
         <result property="skuName" column="sku_name"/>
     </resultMap>
 
-    <sql id="orderAllColumn">
-        id,order_no
-    </sql>
-
     <select id="selectAllOrderVo" resultMap="orderVoResultMap">
-        select id,
-               order_no
+        select id, order_no
         from t_order
     </select>
 

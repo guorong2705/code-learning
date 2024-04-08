@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.guorong.mybatis.mapper.master.TypeHandlerMapper">
-    <resultMap id="BaseResultMap" type="com.guorong.mybatis.entity.TypeHandlerDto">
+
+<mapper namespace="com.guorong.mybatis.mapper.master.TypeHandlerEntityMapper">
+    <resultMap id="BaseResultMap" type="com.guorong.mybatis.entity.master.TypeHandlerEntity">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="dataJson" column="data_json" typeHandler="com.guorong.mybatis.typehandler.JsonNodeTypeHandler"/>
@@ -12,14 +13,14 @@
     </sql>
 
 
-    <insert id="insert" parameterType="com.guorong.mybatis.entity.TypeHandlerDto">
-        insert into type_handler_table(name,data_json)
-        values (#{name},#{dataJson})
+    <insert id="insert" parameterType="com.guorong.mybatis.entity.master.TypeHandlerEntity">
+        insert into type_handler_table(name, data_json)
+        values (#{name}, #{dataJson})
     </insert>
+
     <select id="selectList" resultMap="BaseResultMap">
         select <include refid="AllColumnSql"/>
         from type_handler_table
     </select>
-
 
 </mapper>

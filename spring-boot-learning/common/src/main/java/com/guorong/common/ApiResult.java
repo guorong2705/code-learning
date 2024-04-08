@@ -4,10 +4,6 @@ import lombok.Getter;
 
 import java.io.Serializable;
 
-/**
- * @author guorong
- * @date 2021-05-07
- */
 @Getter
 public class ApiResult<T> implements Serializable {
     private static final Integer SUCCESS_CODE = 20000;
@@ -16,7 +12,9 @@ public class ApiResult<T> implements Serializable {
     private static final String FAIL_MESSAGE = "失败";
 
     private Integer code;
+
     private String message;
+
     private T data;
 
     private ApiResult(Integer code, String message, T data) {
