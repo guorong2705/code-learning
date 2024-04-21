@@ -3,7 +3,7 @@ package com.guorong.springframwork.beans;
 /**
  * bean异常类
  */
-public class BeansException extends Exception{
+public class BeansException extends Exception {
 
     public BeansException(String message) {
         super(message);
