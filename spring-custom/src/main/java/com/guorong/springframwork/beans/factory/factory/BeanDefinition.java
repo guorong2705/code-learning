@@ -11,8 +11,7 @@ public class BeanDefinition {
     private PropertyValues propertyValues;
 
     public BeanDefinition(Class<?> beanClass) {
-        this.beanClass = beanClass;
-        this.propertyValues = new PropertyValues();
+        this(beanClass, null);
     }
 
     public BeanDefinition(Class<?> beanClass, PropertyValues propertyValues) {
@@ -26,6 +25,7 @@ public class BeanDefinition {
 
     /**
      * 获取属性集合
+     *
      * @return
      */
     public PropertyValues getPropertyValues() {
