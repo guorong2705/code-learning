@@ -28,7 +28,7 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry
         return bean;
     }
 
-    // 根据 bean定义创建实例
+    // 创建bean实例
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition,
                                          Object[] args) throws BeansException;
 
