@@ -1,9 +1,7 @@
-package com.guorong.alert.version01;
+package com.guorong.alert.v1;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.util.Objects;
 
 /**
  * 报警规则
