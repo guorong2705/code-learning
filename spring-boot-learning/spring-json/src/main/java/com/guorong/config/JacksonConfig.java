@@ -6,7 +6,6 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.guorong.dict.Dictionary;
-import com.guorong.dict.DictionarySerializer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -42,7 +41,7 @@ public class JacksonConfig {
             builder.serializers(new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DATE_TIME_FORMAT)));
             builder.deserializers(new LocalDateDeserializer(DateTimeFormatter.ofPattern(DATE_TIME_FORMAT)));
             // AnnotationIntrospector(Jackson库中的一个重要类，它用于处理注解，以便在序列化和反序列化过程中对Java对象进行定制处理)
-            builder.annotationIntrospector(dictNopAnnotationIntrospector());
+            // builder.annotationIntrospector(dictNopAnnotationIntrospector());
         };
     }
 
@@ -53,7 +52,7 @@ public class JacksonConfig {
                 // 字段存在自定义的 @Dictionary注解, 使用DictionarySerializer序列化器进行序列化
                 Dictionary dictionaryAnnotation = annotated.getAnnotation(Dictionary.class);
                 if (Objects.nonNull(dictionaryAnnotation)) {
-                    return DictionarySerializer.class;
+                    return Dictionary.DictionarySerializer.class;
                 }
                 // 使用默认初始化的序列化器
                 return super.findSerializer(annotated);

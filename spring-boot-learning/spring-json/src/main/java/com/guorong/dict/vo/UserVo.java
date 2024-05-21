@@ -21,18 +21,22 @@ public class UserVo implements Serializable {
 
     private String userName;
 
-    @Dictionary(dictCodeType = StatusType.class)
+    @Dictionary(dictCodeType = StatusType.class, codeField = "status")
+    private String statusName = Dictionary.DEFAULT_DIC_VALUE;
+
     private String status;
 
-    @Dictionary(dictCodeType = GenderType.class)
     private String gender;
 
-    public UserVo(Integer id, String userName, String status, String gender) {
-        this.id = id;
-        this.userName = userName;
-        this.status = status;
-        this.gender = gender;
-    }
+    @Dictionary(dictCodeType = GenderType.class, codeField = "gender")
+    private String genderName = Dictionary.DEFAULT_DIC_VALUE;
+
+    /**
+     * 扩展信息
+     */
+    private List<UserExtInfoVo> userExtInfoVos;
+
+    // --------------日期类 -----------------------------------------------------
 
     @JsonFormat(pattern = "yyyyMMdd", timezone = "Asia/Shanghai")
     private Date jsonFormatDate = new Date();
@@ -49,10 +53,15 @@ public class UserVo implements Serializable {
 
     private LocalDateTime localDateTime = LocalDateTime.now();
 
+    public UserVo() {
+    }
 
-    /**
-     * 扩展信息
-     */
-    private List<UserExtInfoVo> userExtInfoVos;
+    public UserVo(Integer id, String userName, String status, String gender) {
+        this.id = id;
+        this.userName = userName;
+        this.status = status;
+        this.gender = gender;
+    }
+
 }
 
