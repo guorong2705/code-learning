@@ -1,4 +1,4 @@
-package com.guorong.alert.version01;
+package com.guorong.alert.v1;
 
 /**
  * 报警
