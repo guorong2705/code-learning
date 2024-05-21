@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS t_student;
 CREATE TABLE t_student
 (
-    id          BIGINT not null auto_increment,
+    id          BIGINT primary key not null auto_increment,
     version     int          default null,
     name        VARCHAR(10)  DEFAULT NULL,
     age         INT          DEFAULT NULL,
@@ -15,6 +15,6 @@ CREATE TABLE t_student
 -- 动态表名
 drop table if exists t_dynamic_table_2023;
 create table t_dynamic_table_2023(
-    id bigint primary key not null,
+    id bigint primary key not null auto_increment,
     name varchar(255) not null
 );
