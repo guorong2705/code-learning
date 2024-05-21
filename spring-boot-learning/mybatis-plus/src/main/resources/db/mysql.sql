@@ -1,7 +1,6 @@
 create table scm_dev_1.t_student
 (
-    id          bigint auto_increment
-        primary key,
+    id          bigint auto_increment primary key,
     version     int          null,
     delete_flag int          null,
     create_time datetime     null,

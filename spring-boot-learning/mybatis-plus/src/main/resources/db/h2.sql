@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS t_student;
 CREATE TABLE t_student
 (
-    id          BIGINT primary key NOT NULL,
+    id          BIGINT not null auto_increment,
     version     int          default null,
     name        VARCHAR(10)  DEFAULT NULL,
     age         INT          DEFAULT NULL,

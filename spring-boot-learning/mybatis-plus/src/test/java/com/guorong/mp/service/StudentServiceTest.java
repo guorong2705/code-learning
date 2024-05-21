@@ -37,8 +37,9 @@ public class StudentServiceTest {
                 new Student("Jack", 15, "test2@baomidou.com"),
                 new Student("Tom", 16, "test3@baomidou.com")
         );
+        // 批量保存id会回填到插入实体
         studentService.saveBatch(studentList);
-        studentList.forEach(student -> System.out.println(student.getId()));
+        studentList.forEach(student -> Assertions.assertNotNull(student.getId()));
     }
 
     @Test
