@@ -2,18 +2,24 @@ package com.guorong.mp.tx_propagation;
 
 import com.guorong.mp.entity.PropagationEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * PROPAGATION_REQUIRED
+ * 如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。
+ */
 @RequiredArgsConstructor
-@Service
-public class PropagationRequiredManager {
+@Component
+public class RequiredManager {
 
     private final PropagationService propagationService;
 
 
-    // 场景一：通过这两个方法我们证明了在外围方法未开启事务的情况下Propagation.REQUIRED修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。
+    // 场景一：通过这两个方法我们证明了在外围方法未开启事务的情况下Propagation.REQUIRED修饰的内部方法会新开启自己的事务，
+    // 且开启的事务相互独立，互不干扰。
 
     /**
      * 结果：张三”、“李四”均插入。
