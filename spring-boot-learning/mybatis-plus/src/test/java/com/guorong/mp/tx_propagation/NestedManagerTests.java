@@ -8,18 +8,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Slf4j
 @SpringBootTest
-public class PropagationEntityRequiredManagerTests {
+public class NestedManagerTests {
 
     @Autowired
-    private PropagationRequiredManager service;
+    private NestedManager service;
 
     @Autowired
     private PropagationService propagationService;
 
+    // --------------------------------------------------------------------------
+
     @Test
-    public void test_no_transaction_exception_required_required() {
+    public void test_no_transaction_exception_nested_nested() {
         try {
-            service.no_transaction_exception_required_required();
+            service.no_transaction_exception_nested_nested();
         } catch (Exception e) {
             log.info("{}", e.getMessage());
         }
@@ -30,9 +32,9 @@ public class PropagationEntityRequiredManagerTests {
     }
 
     @Test
-    public void test_no_transaction_required_required_exception() {
+    public void test_no_transaction_nested_nested_exception() {
         try {
-            service.no_transaction_required_required_exception();
+            service.no_transaction_nested_nested_exception();
         } catch (Exception e) {
             log.info("{}", e.getMessage());
         }
@@ -42,12 +44,11 @@ public class PropagationEntityRequiredManagerTests {
         Assertions.assertNull(propagationService.getById(2L));
     }
 
-    //--------------------------------------------------------
 
     @Test
-    public void test_transaction_exception_required_required() {
+    public void test_transaction_exception_nested_nested() {
         try {
-            service.transaction_exception_required_required();
+            service.transaction_exception_nested_nested();
         } catch (Exception e) {
             log.info("{}", e.getMessage());
         }
@@ -59,9 +60,9 @@ public class PropagationEntityRequiredManagerTests {
 
 
     @Test
-    public void test_transaction_required_required_exception() {
+    public void test_transaction_nested_nested_exception() {
         try {
-            service.transaction_required_required_exception();
+            service.transaction_nested_nested_exception();
         } catch (Exception e) {
             log.info("{}", e.getMessage());
         }
@@ -72,17 +73,15 @@ public class PropagationEntityRequiredManagerTests {
     }
 
     @Test
-    public void test_transaction_required_required_exception_try() {
+    public void test_transaction_nested_nested_exception_try() {
         try {
-            service.transaction_required_required_exception_try();
+            service.transaction_nested_nested_exception_try();
         } catch (Exception e) {
-            log.error("错误：", e);
+            log.info("{}", e.getMessage());
         }
         // 查询张三
-        Assertions.assertNull(propagationService.getById(1L));
+        Assertions.assertNotNull(propagationService.getById(1L));
         // 查询李四
         Assertions.assertNull(propagationService.getById(2L));
     }
-
-
 }
