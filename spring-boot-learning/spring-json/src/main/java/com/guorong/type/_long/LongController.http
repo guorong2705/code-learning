@@ -1,0 +1,8 @@
+###
+POST http://localhost:8080/type/long/testLong
+Content-Type: application/json
+
+{
+  "long1": "    25",
+  "long2": "12"
+}
