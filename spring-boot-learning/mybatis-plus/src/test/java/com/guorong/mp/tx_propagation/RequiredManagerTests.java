@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Slf4j
 @SpringBootTest
-public class PropagationEntityRequiredManagerTests {
+public class RequiredManagerTests {
 
     @Autowired
-    private PropagationRequiredManager service;
+    private RequiredManager service;
 
     @Autowired
     private PropagationService propagationService;
