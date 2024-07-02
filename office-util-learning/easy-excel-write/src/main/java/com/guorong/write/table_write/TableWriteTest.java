@@ -1,13 +1,20 @@
-package com.guorong.write;
+package com.guorong.write.table_write;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
+import com.alibaba.excel.annotation.write.style.ContentRowHeight;
+import com.alibaba.excel.annotation.write.style.HeadRowHeight;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.metadata.WriteTable;
 import com.guorong.write.entity.Car;
 import com.guorong.write.entity.Student;
-import org.junit.Test;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +25,7 @@ import java.util.Objects;
  * @author guorong
  * @date 2021-05-16
  */
-public class TableWriteTest {
+class TableWriteTest {
 
     private static List<Student> studentData = new ArrayList<>();
     private static List<Car> carData = new ArrayList<>();
@@ -42,7 +49,7 @@ public class TableWriteTest {
     //===============================================================
 
     @Test
-    public void writeTable01() {
+    void writeTable01() {
         String fileName = this.getClass()
                 .getResource("/").getPath()
                 .concat("student").concat(String.valueOf(System.currentTimeMillis()))
@@ -65,6 +72,43 @@ public class TableWriteTest {
                 excelWriter.finish();
             }
         }
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @HeadRowHeight(20) // 表头高度
+    @ContentRowHeight(12) // 内容高度
+    static class Car {
+
+        @ColumnWidth(15) // 设置单元格宽度
+        @ExcelProperty(value = "品牌")
+        private String brand;
+
+        @ColumnWidth(15)
+        @ExcelProperty(value = "价格")
+        private Double price;
+
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @HeadRowHeight(30) // 表头行高
+    @ContentRowHeight(15) // 内容行高
+    static class Student {
+
+        @ColumnWidth(15) // 单元格宽度
+        @ExcelProperty(value = "学生编号")
+        private String id;
+
+        @ColumnWidth(15) // 单元格宽度
+        @ExcelProperty(value = "学生姓名")
+        private String name;
+
+        @ColumnWidth(15) // 单元格宽度
+        @ExcelProperty(value = "学生年龄")
+        private Integer age;
     }
 
 }
