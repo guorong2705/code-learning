@@ -21,9 +21,9 @@ class MessageWriteHandlerTests {
 
     static {
         // 学生数据
-        studentData.add(new Student("01", "周杰伦", 21));
-        studentData.add(new Student("02", "王力宏", 22));
-        studentData.add(new Student("03", "林俊杰", 23));
+        studentData.add(new Student("z01", "周杰伦", 21));
+        studentData.add(new Student("z02", "王力宏", 22));
+        studentData.add(new Student("z03", "林俊杰", 23));
     }
 
     // 测试一次合并效果

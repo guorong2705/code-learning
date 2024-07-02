@@ -9,8 +9,6 @@ import com.alibaba.excel.annotation.write.style.HeadRowHeight;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.metadata.WriteTable;
-import com.guorong.write.entity.Car;
-import com.guorong.write.entity.Student;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
