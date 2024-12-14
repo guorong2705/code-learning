@@ -1,0 +1,29 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: spring-redis
+#==============redis集群配置==================================
+  redis:
+    timeout: 3000ms  # 超时时间
+    lettuce:
+      pool:
+        max-active: 10  # 最大连接数
+        max-idle: 5    # 最大空闲连接数
+        min-idle: 2     # 最小空闲连接数
+        max-wait: 1000ms # 最大等待时间
+      cluster:
+        # 自动更新redis集群拓扑
+        refresh:
+          adaptive: true
+          period: 30000 # 30秒更新一次
+    cluster:
+      # 集群节点列表
+      nodes:
+        - 192.168.56.201:6380
+        - 192.168.56.201:6381
+        - 192.168.56.202:6380
+        - 192.168.56.202:6381
+        - 192.168.56.203:6380
+        - 192.168.56.203:6381
+

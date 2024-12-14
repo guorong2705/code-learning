@@ -20,7 +20,6 @@
         <module>spring-jdbc</module>
         <module>spring-jpa</module>
         <module>spring-security</module>
-        <module>redis</module>
         <module>mybatis</module>
         <module>mybatis-plus</module>
         <module>minio</module>
@@ -33,6 +32,8 @@
         <module>rocketmq</module>
         <module>spring-aop</module>
         <module>spring-demo</module>
+        <module>spring-redis</module>
+        <module>spring-redisson</module>
     </modules>
 
 </project>

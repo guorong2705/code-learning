@@ -1,0 +1,25 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: spring-redis
+#==============redis哨兵机制配置==================================
+  redis:
+    password: 123456 # 主节点密码
+    database: 0
+    sentinel:
+      master: mymaster       # 主节点名称，与 Sentinel 配置一致
+      nodes:                 # 哨兵节点列表
+        - 192.168.56.201:26379
+        - 192.168.56.202:26379
+        - 192.168.56.203:26379
+    lettuce:
+      pool:
+        max-active: 10       # 最大连接数
+        max-idle: 5          # 最大空闲连接数
+        min-idle: 2          # 最小空闲连接数
+logging:
+  level:
+    root: info
+    io.lettuce.core: debug
+    org.springframework.data.redis: debug

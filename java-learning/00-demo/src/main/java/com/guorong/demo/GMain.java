@@ -16,15 +16,6 @@ public class GMain {
      */
     @SneakyThrows
     public static void main(String[] args) {
-        List<byte[]> list = new ArrayList<>();
-        int i = 0;
-        while (true) {
-            i ++;
-            TimeUnit.SECONDS.sleep(1);
-            list.add(new byte[_1MB]);
-            if (list.size() == 10) {
-                list.clear();
-            }
-        }
+        TimeUnit.SECONDS.sleep(100);
     }
 }

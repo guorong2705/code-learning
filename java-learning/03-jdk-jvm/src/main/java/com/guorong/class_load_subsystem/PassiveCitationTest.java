@@ -13,7 +13,7 @@ class PassiveCitationTest {
      */
     @Test
     void test01() {
-        System.out.println(SubClass.value);
+        int value = SubClass.value;
     }
 
 
@@ -27,13 +27,12 @@ class PassiveCitationTest {
 
 
     /**
-     * 03. 被动使用类字段演示三：
-     * 常量在编译阶段会存入调用类的常量池中，本质上没有直接引用到定义常量的类，因此不会触发定义常量的类的初始化
+     * 03. 被动使用类字段演示三：常量在编译阶段会存入调用类的常量池中，
+     * 本质上没有直接引用到定义常量的类，因此不会触发定义常量的类的初始化.
      */
     @Test
     void test03() {
-        System.out.println(SuperClass.CONSTANT);
-
+        String constant = ConstClass.CONSTANT;
     }
 
 
@@ -47,8 +46,6 @@ class PassiveCitationTest {
 
         // 类变量：存放到方法区中
         public static int value = 123;
-        // 常量在编译阶段会存入调用类的常量池中，本质上没有直接引用到定义常量的类
-        public static final String CONSTANT = "hello world";
     }
 
 
@@ -59,6 +56,15 @@ class PassiveCitationTest {
         static {
             System.out.println("SubClass init...");
         }
+    }
+
+    static class ConstClass {
+        static {
+            System.out.println("ConstClass init...");
+        }
+
+        // 常量在编译阶段会存入调用类的常量池中，本质上没有直接引用到定义常量的类
+        public static final String CONSTANT = "hello world";
     }
 
 }

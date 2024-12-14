@@ -2,15 +2,11 @@ package com.guorong.redis;
 
 import com.guorong.redis.entity.BookDto;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +16,6 @@ import java.util.concurrent.TimeUnit;
  * @date 2020-05-13
  */
 @Slf4j
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class RedisTemplateTests {
 
@@ -30,19 +25,38 @@ public class RedisTemplateTests {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    // 测试读写分离
+    @Test
+    public void testReadWriteDiff() {
+        stringRedisTemplate.opsForValue().set("g-key", "1111");
+        log.info("============ 写入成功 ==========================");
+        stringRedisTemplate.opsForValue().get("g-key");
+        log.info("============ 读取成功 ==========================");
+    }
+
 
     //==================================字符串操作==================================================
     @Test
     public void testSetString01() {
         // 设置的值为永久的
-        redisTemplate.opsForValue().set("hello", "world");
+        redisTemplate.opsForValue().set("hello01", "world");
     }
 
     // 操作字符串建议
     @Test
     public void testSetString02() {
         // 设置的值为永久的
-        stringRedisTemplate.opsForValue().set("hello", "world");
+        stringRedisTemplate.opsForValue().set("58998", "world");
+    }
+
+    @Test
+    public void test() {
+        BookDto book = new BookDto();
+        book.setId("001");
+        book.setBookName("Redis从入门到精通");
+        book.setPrice(Double.valueOf(25.6));
+        // 存入redis中
+        redisTemplate.opsForValue().set("book", book);
     }
 
     // 设置字符串失效时间
@@ -79,17 +93,6 @@ public class RedisTemplateTests {
     }
 
 
-    //=============================操作Hash=========================================
-    @Test
-    public void test() {
-        BookDto book = new BookDto();
-        book.setId("001");
-        book.setBookName("Redis从入门到精通");
-        book.setPrice(Double.valueOf(25.6));
-        // 存入redis中
-        redisTemplate.opsForHash();
-
-    }
 
 
 }
