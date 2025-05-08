@@ -1,0 +1,26 @@
+[
+  {
+    "type": "DefaultDiscount",
+    "priority": 0,
+    "discountRate": 0.1,
+    "paymentType": "ALIPAY"
+  },
+  {
+    "type": "DefaultDiscount",
+    "priority": 0,
+    "discountRate": 0.15,
+    "paymentType": "WECHAT"
+  },
+  {
+    "type": "MemberDiscount",
+    "priority": 2,
+    "discountRate": 0.1,
+    "paymentType": null
+  },
+  {
+    "type": "TimeBasedDiscount",
+    "priority": 1,
+    "discountRate": 0.05,
+    "paymentType": null
+  }
+]

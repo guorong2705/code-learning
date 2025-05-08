@@ -1,0 +1,14 @@
+[
+  {
+    "paymentType": "ALIPAY",
+    "maxAmount": 10000,
+    "smsEnabled": true,
+    "emailEnabled": false
+  },
+  {
+    "paymentType": "WECHAT",
+    "maxAmount": 10000,
+    "smsEnabled": true,
+    "emailEnabled": false
+  }
+]

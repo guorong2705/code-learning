@@ -28,9 +28,9 @@ public class RedisTemplateTests {
     // 测试读写分离
     @Test
     public void testReadWriteDiff() {
-        stringRedisTemplate.opsForValue().set("g-key", "1111");
+        stringRedisTemplate.opsForValue().set("张三", "1111");
         log.info("============ 写入成功 ==========================");
-        stringRedisTemplate.opsForValue().get("g-key");
+        stringRedisTemplate.opsForValue().get("张三");
         log.info("============ 读取成功 ==========================");
     }
 

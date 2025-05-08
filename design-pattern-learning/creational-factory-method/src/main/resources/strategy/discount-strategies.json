@@ -1,0 +1,17 @@
+[
+  {
+    "type": "MemberDiscountStrategy",
+    "priority": 2,
+    "parameters": {
+      "discountRate": 0.5,
+      "requiredMemberLevel": "VIP"
+    }
+  },
+  {
+    "type": "OfflineDiscountStrategy",
+    "priority": 10,
+    "parameters": {
+      "discountRate": 0.7
+    }
+  }
+]

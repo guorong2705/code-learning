@@ -1,0 +1,2 @@
+com.guorong.stack.factory.spi.ArrayStackProvider
+com.guorong.stack.factory.spi.LinkedStackProvider

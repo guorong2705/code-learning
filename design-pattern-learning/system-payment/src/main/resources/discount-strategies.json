@@ -1,0 +1,35 @@
+[
+  {
+    "type": "DefaultDiscount",
+    "priority": 0,
+    "parameters": {
+      "paymentType": "ALIPAY",
+      "discountRate": 0.1
+    }
+  },
+  {
+    "type": "DefaultDiscount",
+    "priority": 0,
+    "parameters": {
+      "paymentType": "WECHAT",
+      "discountRate": 0.5
+    }
+  },
+  {
+    "type": "MemberDiscount",
+    "priority": 2,
+    "parameters": {
+      "discountRate": 0.1,
+      "requiredMemberLevel": "VIP"
+    }
+  },
+  {
+    "type": "HolidayDiscount",
+    "priority": 1,
+    "parameters": {
+      "discountRate": 0.05,
+      "beginHourOfDay": 12,
+      "endHourOfDay": 17
+    }
+  }
+]

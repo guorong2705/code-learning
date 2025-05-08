@@ -17,6 +17,7 @@ spring:
         refresh:
           adaptive: true
           period: 30000 # 30秒更新一次
+    password: 123456
     cluster:
       # 集群节点列表
       nodes:
@@ -26,4 +27,8 @@ spring:
         - 192.168.56.202:6381
         - 192.168.56.203:6380
         - 192.168.56.203:6381
-
+logging:
+  level:
+    root: info
+    io.lettuce.core: debug
+    org.springframework.data.redis: debug
